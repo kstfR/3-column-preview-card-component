@@ -1,0 +1,17 @@
+// ! breakpoints
+$mobile: 375px;
+$desktop: 1440px;
+
+$bp: (
+  mobile: $mobile,
+  desktop: $desktop,
+) !default;
+
+// ! media queries
+@mixin mq($breakpoint, $mm: min, $wh: width) {
+  @if map-has-key($map: c.$bp, $key: $breakpoint) {
+    @media (#{$mm}-#{$wh}: #{map-get(c.$bp, $breakpoint)}) {
+      @content;
+    }
+  }
+}
